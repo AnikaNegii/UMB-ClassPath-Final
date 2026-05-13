@@ -42,7 +42,7 @@ export default function RootLayout({
       className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex h-full flex-col bg-background text-foreground">
+      <body className="flex min-h-full flex-col bg-background text-foreground">
         {/* Skip to main content — accessibility */}
         <a
           href="#main-content"

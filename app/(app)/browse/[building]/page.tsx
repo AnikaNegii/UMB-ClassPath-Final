@@ -1,9 +1,13 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronRight, GraduationCap, BookOpen, Building2, Users, FlaskConical, LibraryBig, Briefcase } from 'lucide-react'
-import { getBuildingById, getFloorsByBuilding, getRoomCountByFloor } from '@/lib/data'
+import { buildings, getBuildingById, getFloorsByBuilding, getRoomCountByFloor } from '@/lib/data'
 import { BreadcrumbBar } from '@/components/BreadcrumbBar'
 import type { ElementType } from 'react'
+
+export function generateStaticParams() {
+  return buildings.map(b => ({ building: b.id }))
+}
 
 const BUILDING_ICONS: Record<string, ElementType> = {
   'university-hall':            GraduationCap,

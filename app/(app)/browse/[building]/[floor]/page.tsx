@@ -1,11 +1,18 @@
 import { notFound } from 'next/navigation'
 import {
+  buildings,
   getBuildingById,
   getRoomsByBuildingAndFloor,
   getFloorsByBuilding,
 } from '@/lib/data'
 import { BreadcrumbBar } from '@/components/BreadcrumbBar'
 import { RoomSelector } from '@/components/RoomSelector'
+
+export function generateStaticParams() {
+  return buildings.flatMap(b =>
+    getFloorsByBuilding(b.id).map(floor => ({ building: b.id, floor: String(floor) }))
+  )
+}
 
 interface Props {
   params: Promise<{ building: string; floor: string }>
